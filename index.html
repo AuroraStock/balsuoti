@@ -2,22 +2,25 @@
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dainų Dainelė Balsavimas</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 40px 20px; background-color: #f4f4f9; color: #333; }
+        .box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
+        h2 { color: #0054a6; margin-bottom: 10px; }
+        p { font-size: 16px; line-height: 1.5; margin-bottom: 25px; }
+        .btn { display: inline-block; background-color: #ffcc00; color: #000; padding: 15px 30px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .btn:hover { background-color: #e6b800; }
+    </style>
 </head>
 <body>
-    <h3 style="text-align: center; margin-top: 20%;">Balsas už Nemenčinės muzikos mokyklą siunčiamas...</h3>
 
-    <script>
-        // Fone išsiunčiame balsą į LRT serverį
-        fetch('https://api.lrt.lt/api/vote/2602', { method: 'PUT' })
-        .then(() => {
-            // Kai balsas išsiunčiamas, iškart nukreipiame draugą į oficialų LRT puslapį
-            window.location.href = "https://www.lrt.lt/projektai/dainu-dainele#:~:text=Nemenčinės%20muzikos%20mokyklos";
-        })
-        .catch(() => {
-            // Jei įvyko klaida, vistiek nukreipiame, kad žmogus galėtų balsuoti rankiniu būdu
-            window.location.href = "https://www.lrt.lt/projektai/dainu-dainele";
-        });
-    </script>
+    <div class="box">
+        <h2>Balsavimas už Nemenčinę! 🎵</h2>
+        <p>Paspaudus mygtuką, atsidarys LRT puslapis ir vaizdas iškart <b>nušoks tiesiai prie reikiamo ansamblio</b>. Jums liks tik spustelėti „Balsuoti“!</p>
+        
+        <a class="btn" href="https://www.lrt.lt/projektai/dainu-dainele#:~:text=Nemenčinės%20muzikos%20mokyklos">Atidaryti ir Balsuoti</a>
+    </div>
+
 </body>
 </html>
