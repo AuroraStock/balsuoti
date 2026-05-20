@@ -1,78 +1,19 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balsavimas – Dainų Dainelė</title>
-    <style>
-        /* Pašaliname visus naršyklės kraštus */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #f4f4f9;
-            font-family: sans-serif;
-        }
-
-        /* Antraštė viršuje, kad draugai suprastų, ką daryti */
-        .header {
-            background-color: #0054a6;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-        }
-
-        /* Konteineris, kuris veikia kaip „langas“ į LRT puslapį */
-        .window-container {
-            position: absolute;
-            top: 50px; /* Vietos palikimas antraštei */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 360px;  /* Mygtuko zonos plotis */
-            height: 180px; /* Mygtuko zonos aukštis */
-            overflow: hidden;
-            border: 3px solid #ffcc00;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            background: white;
-            margin-top: 40px;
-        }
-
-        /* Pats LRT puslapis, kurį pastumiame taip, kad matytųsi TIK mygtukas */
-        iframe {
-            position: absolute;
-            
-            /* Šie skaičiai nukreipia rėmelį tiksliai į Nemenčinės ansamblio vietą */
-            /* Jei pastebėsi, kad vaizdas šiek tiek nusileidęs pro šalį, pakoreguok top ir left pikselius (px) */
-            top: -3450px;  
-            left: -10px;
-            
-            width: 1280px; /* Imituojame plataus ekrano puslapį, kad mygtukas neišsivartytų */
-            height: 5000px;
-            border: none;
-            pointer-events: auto;
-        }
-    </style>
+    <title>Balsavimas</title>
 </head>
 <body>
-
-    <div class="header">
-        🎵 Spustelkite geltoną mygtuką „Balsuoti“ žemiau!
-    </div>
-
-    <div class="window-container">
-        <iframe src="https://www.lrt.lt/projektai/dainu-dainele"></iframe>
-    </div>
-
+    <h3>Balsas siunčiamas...</h3>
+    <script>
+        fetch('https://api.lrt.lt/api/vote/2602', { method: 'PUT' })
+        .then(() => {
+            // Kai balsas nusiunčiamas, nukreipiame draugą į oficialų puslapį
+            window.location.href = "https://www.lrt.lt/projektai/dainu-dainele#:~:text=Nemenčinės%20muzikos%20mokyklos";
+        })
+        .catch(() => {
+            alert('Klaida. Bandykite dar kartą.');
+        });
+    </script>
 </body>
 </html>
