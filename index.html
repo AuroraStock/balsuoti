@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Dainų Dainelė Balsavimas</title>
+</head>
+<body>
+    <h3 style="text-align: center; margin-top: 20%;">Balsas už Nemenčinės muzikos mokyklą siunčiamas...</h3>
+
+    <script>
+        // Fone išsiunčiame balsą į LRT serverį
+        fetch('https://api.lrt.lt/api/vote/2602', { method: 'PUT' })
+        .then(() => {
+            // Kai balsas išsiunčiamas, iškart nukreipiame draugą į oficialų LRT puslapį
+            window.location.href = "https://www.lrt.lt/projektai/dainu-dainele#:~:text=Nemenčinės%20muzikos%20mokyklos";
+        })
+        .catch(() => {
+            // Jei įvyko klaida, vistiek nukreipiame, kad žmogus galėtų balsuoti rankiniu būdu
+            window.location.href = "https://www.lrt.lt/projektai/dainu-dainele";
+        });
+    </script>
+</body>
+</html>
