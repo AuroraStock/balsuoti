@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="lt">
 <head>
-    <title>Balsavimas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nukreipimas į balsavimą</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding-top: 20%;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0054a6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <h3>Balsas siunčiamas...</h3>
+
+    <h2>Nukreipiame į balsavimo puslapį...</h2>
+    <div class="loader"></div>
+    <p>Jeigu puslapis neatsidaro automatiškai, <a id="direct-link" href="#">spauskite čia</a>.</p>
+
     <script>
-        fetch('https://api.lrt.lt/api/vote/2602', { method: 'PUT' })
-        .then(() => {
-            // Kai balsas nusiunčiamas, nukreipiame draugą į oficialų puslapį
-            window.location.href = "https://www.lrt.lt/projektai/dainu-dainele#:~:text=Nemenčinės%20muzikos%20mokyklos";
-        })
-        .catch(() => {
-            alert('Klaida. Bandykite dar kartą.');
-        });
+        // Tikslus adresas, kurį nukopijavai
+        const targetUrl = "https://www.lrt.lt/projektai/dainu-dainele#:~:text=Nemenčinės%20muzikos%20mokyklos";
+
+        // Saugumo dėlei atnaujiname ir rankinę nuorodą ekrane
+        document.getElementById('direct-link').href = targetUrl;
+
+        // Automatinis peradresavimas iškart užkrovus puslapį
+        window.location.href = targetUrl;
     </script>
+
 </body>
 </html>
